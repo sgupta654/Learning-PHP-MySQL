@@ -1,0 +1,19 @@
+<?php
+/*
+
+*	File:		alphacrmTableCreate.php
+*	By:			Sandeep Gupta
+*	Date:		5/19/2015
+*
+*	This script CREATEs tables tCompany and tPerson
+*	in the database alphacrm
+*
+*
+*=====================================
+*/
+
+
+
+
+
+?>

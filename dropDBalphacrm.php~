@@ -1,0 +1,18 @@
+<?php
+/*
+
+*	File:		dropDBalphacrm.php
+*	By:			Sandeep Gupta
+*	Date:		5/19/2015
+*
+*	This script DROPs the database alphacrm*
+*
+*
+*=====================================
+*/
+
+mysql_query("DROP DATABASE alphacrm");
+
+
+
+?>
