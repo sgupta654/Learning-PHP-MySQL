@@ -32,7 +32,7 @@
 
 // $thisScriptName separated out as it's now used several times
 $thisScriptName = "companyPeopleEdit.php";
-
+$postFormName = $thisScriptName;
 if ($dbSuccess) {
 		if(!isset($_POST["companyID"])) { 
 			if (isset($_GET["companyID"])) {
@@ -254,39 +254,7 @@ if ($dbSuccess) {
 		} else {
 
 			{	//	Select company from dropdowm
-				
-				$tCompany_SQLselect = "SELECT  ";
-				$tCompany_SQLselect .= "ID, preName, Name ";	
-				$tCompany_SQLselect .= "FROM ";
-				$tCompany_SQLselect .= "tCompany ";
-				$tCompany_SQLselect .= "Order By Name ";
-					
-				$tCompany_SQLselect_Query = mysql_query($tCompany_SQLselect);	
-				
-				echo '<form action="'.$thisScriptName.'" method="post">';
-				
-				echo '<select name="companyID">';
-				
-					echo '<option value="0" label="coyvalue" selected="selected">..select company..</option>';
-			 	
-						while ($row = mysql_fetch_array($tCompany_SQLselect_Query, MYSQL_ASSOC)) {
-						    $ID = $row['ID'];
-						    $preName = $row['preName'];
-						    $companyName = $row['Name'];
-						    $RegType = $row['RegType'];
-						    
-						    $fullCoyName = trim($preName." ".$companyName." ".$RegType);
-						    
-						    echo '<option value="'.$ID.'">'.$fullCoyName.'</option>';
-						}
-					
-						mysql_free_result($tCompany_SQLselect_Query);		
-				
-						echo '</select>';
-				
-						echo '<input type="submit" />';
-						
-				echo '</form>';
+				include_once('../includes/coDropDown.php');
 				//	END:  Select company from dropdowm
 			}
 			

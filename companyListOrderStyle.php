@@ -1,7 +1,7 @@
 <?php
 /*
 
-*	File:			companyListOrder.php
+*	File:			companyListOrderStyle.php
 *	By:			TMIT
 *	Date:		2010-06-01
 *
@@ -27,12 +27,11 @@
 }
 
 if ($dbSuccess) {
-	include_once('../includes/stringFunctions.php');
 
 	//	external style sheet 
 	echo '<link rel="stylesheet" href="../css/alphacrm.css" type="text/css" />';
 	
-	$thisScriptName = 'companyListOrder.php';
+	$thisScriptName = 'companyListOrderStyle.php';
 	
 	
 	//		Get the sortorder with GET but default to Name
@@ -85,18 +84,15 @@ if ($dbSuccess) {
 				$preName = $row['preName'];
 				$CompanyName = $row['Name'];
 				$regType = $row['RegType'];				
-				//$CompanyFullName = trim($CompanyName." ".$regType);
-				$CompanyFullName = shortCoName($CompanyName, $regType);
-
+				$CompanyFullName = trim($CompanyName." ".$regType);
+				
 				$StreetA = $row['StreetA'];
 				$StreetB = $row['StreetB'];
 				$StreetC = $row['StreetC'];			    
-				//$CompanyAddress = $StreetA;				
-				//if (!empty($StreetB)) { $CompanyAddress .=  ", ".$StreetB; }
-				//if (!empty($StreetC)) { $CompanyAddress .=  ", ".$StreetC; }		    
+				$CompanyAddress = $StreetA;				
+				if (!empty($StreetB)) { $CompanyAddress .=  ", ".$StreetB; }
+				if (!empty($StreetC)) { $CompanyAddress .=  ", ".$StreetC; }		    
 					
-				$CompanyAddress = coAddress($StreetA, $StreetB, $StreetC);
-			   
 			   $Town = $row['Town'];
 			   $County = $row['County'];
 			   $Postcode = $row['Postcode'];
@@ -140,8 +136,12 @@ if ($dbSuccess) {
 echo '<br /><hr /><br />';
 
 echo '<a href="../index.php">Quit - to homepage</a>';
+//	FUNCTIONS
 
-
+		function shortCoName($coName, $regType) {
+			$temp = trim(.$coName." ".$regType);
+			return $temp;
+		}
 
 
 ?>
